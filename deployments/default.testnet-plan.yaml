@@ -1,0 +1,23 @@
+---
+id: 1
+name: StacksGrantDAO
+network: testnet
+stacks-node: "https://api.testnet.hiro.so"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: ft-trait
+            expected-sender: STxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  # Update with your testnet address
+            cost: 4760
+            path: contracts/ft-trait.clar
+            anchor-block-only: true
+            clarity-version: 2
+        - contract-publish:
+            contract-name: dao-grants
+            expected-sender: STxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  # Update with your testnet address
+            cost: 54020
+            path: contracts/dao-grants.clar
+            anchor-block-only: true
+            clarity-version: 2

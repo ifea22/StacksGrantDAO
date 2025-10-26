@@ -1,14 +1,18 @@
 
 {
-  "name": "StacksGrantDAO-tests",
+  "name": "stacks-grant-dao",
   "version": "1.0.0",
-  "description": "Run unit tests on this project.",
+  "description": "Stacks Grant DAO - Decentralized funding platform for Stacks ecosystem projects",
   "type": "module",
   "private": true,
   "scripts": {
     "test": "vitest run",
-    "test:report": "vitest run -- --coverage --costs",
-    "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm run test:report\""
+    "check": "clarinet check",
+    "deploy": "clarinet deployments generate --testnet && clarinet deployments apply --testnet",
+    "build:frontend": "cd frontend && npm run build",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd frontend && npm install",
+    "start": "npm run check && npm run deploy && npm run build:frontend"
   },
   "author": "",
   "license": "ISC",

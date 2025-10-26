@@ -1,12 +1,8 @@
 import { AnchorMode, callReadOnlyFunction, cvToValue, makeContractCall, PostConditionMode, standardPrincipalCV, uintCV, boolCV, principalCV, stringUtf8CV } from '@stacks/transactions';
-import { StacksTestnet, StacksMainnet, StacksDevnet } from '@stacks/network';
-import { DAO_CONTRACT, TOKEN_CONTRACT, NETWORK } from '@/config';
+import { StacksTestnet } from '@stacks/network';
+import { DAO_CONTRACT, TOKEN_CONTRACT } from '../config';
 
-const network = NETWORK === 'mainnet' 
-  ? new StacksMainnet() 
-  : NETWORK === 'devnet' 
-    ? new StacksDevnet() 
-    : new StacksTestnet();
+const network = new StacksTestnet();
 
 function splitContract(id: string) {
   const [address, name] = id.split('.');

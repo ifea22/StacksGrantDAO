@@ -1,5 +1,5 @@
 import React from 'react'
-import { txSubmitProposal } from '@/api/stacks'
+import { txSubmitProposal } from '../api/stacks'
 
 export default function Submit(){
   const [recipient, setRecipient] = React.useState('ST3J2GVMMM2R07ZFBJDWTYEYAR8FZH5WKD1T4G6C3')

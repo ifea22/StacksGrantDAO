@@ -1,5 +1,5 @@
 import React from 'react'
-import ProposalCard from '@/components/ProposalCard'
+import ProposalCard from '../components/ProposalCard'
 
 // Demo-only mock list; wire to read-only calls in production
 export default function Proposals(){

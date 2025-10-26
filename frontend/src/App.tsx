@@ -1,8 +1,8 @@
 import React from 'react'
-import Submit from '@/pages/Submit'
-import Proposals from '@/pages/Proposals'
-import Treasury from '@/pages/Treasury'
-import ConnectWallet from '@/components/ConnectWallet'
+import Submit from './pages/Submit'
+import Proposals from './pages/Proposals'
+import Treasury from './pages/Treasury'
+import ConnectWallet from './components/ConnectWallet'
 
 export default function App() {
   const [tab, setTab] = React.useState<'submit'|'proposals'|'treasury'>('submit')

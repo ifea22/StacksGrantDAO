@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import React from 'react';
-import ProposalCard from '@/components/ProposalCard';
+import ProposalCard from '../components/ProposalCard';
 // Demo-only mock list; wire to read-only calls in production
 export default function Proposals() {
     const [list] = React.useState([

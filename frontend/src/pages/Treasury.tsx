@@ -1,5 +1,5 @@
 import React from 'react'
-import { TOKEN_CONTRACT } from '@/config'
+import { TOKEN_CONTRACT } from '../config'
 
 export default function Treasury(){
   return (
