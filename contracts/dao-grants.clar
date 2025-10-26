@@ -1,4 +1,5 @@
-(impl-trait .traits.sip010-ft-trait) ;; not required; included for easy reference
+;; Import trait
+(use-trait sip010-trait .ft-trait.sip010-ft-trait)
 
 (define-constant ERR-NOT-A-MEMBER (err u100))
 (define-constant ERR-NOT-ADMIN (err u101))
@@ -129,11 +130,10 @@
   )
 )
 
-(define-public (finalize (id uint))
+(define-public (finalize (id uint) (token <sip010-trait>))
   (let
     (
       (prop (unwrap! (map-get? proposals { id: id }) ERR-PROPOSAL-NOT-FOUND))
-      (token (var-get token-contract))
     )
     (begin
       (asserts! (> block-height (get end-height prop)) ERR-VOTING-OPEN)

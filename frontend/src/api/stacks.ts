@@ -1,8 +1,12 @@
 import { AnchorMode, callReadOnlyFunction, cvToValue, makeContractCall, PostConditionMode, standardPrincipalCV, uintCV, boolCV, principalCV, stringUtf8CV } from '@stacks/transactions';
-import { StacksTestnet, StacksMainnet } from '@stacks/network';
+import { StacksTestnet, StacksMainnet, StacksDevnet } from '@stacks/network';
 import { DAO_CONTRACT, TOKEN_CONTRACT, NETWORK } from '@/config';
 
-const network = NETWORK === 'mainnet' ? new StacksMainnet() : new StacksTestnet();
+const network = NETWORK === 'mainnet' 
+  ? new StacksMainnet() 
+  : NETWORK === 'devnet' 
+    ? new StacksDevnet() 
+    : new StacksTestnet();
 
 function splitContract(id: string) {
   const [address, name] = id.split('.');
@@ -50,14 +54,15 @@ export function txVote(senderKey: string, id: number, support: boolean) {
   });
 }
 
-export function txFinalize(senderKey: string, id: number) {
+export function txFinalize(senderKey: string, id: number, tokenContract: string) {
   const { address, name } = splitContract(DAO_CONTRACT);
+  const tokenParts = splitContract(tokenContract);
   return makeContractCall({
     senderKey,
     contractAddress: address,
     contractName: name,
     functionName: 'finalize',
-    functionArgs: [uintCV(id)],
+    functionArgs: [uintCV(id), principalCV(`${tokenParts.address}.${tokenParts.name}`)],
     postConditionMode: PostConditionMode.Allow,
     network,
     anchorMode: AnchorMode.Any
